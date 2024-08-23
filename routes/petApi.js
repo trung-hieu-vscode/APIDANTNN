@@ -8,6 +8,12 @@ router.get('/get-by-idSpecie', petController.getByIdSpecie)
 
 router.get('/get-by-idCategory', petController.getPetByIdCategory)
 
+router.put('/approve/:id', petController.approvePet)
+
+router.put('/reject/:id', petController.rejectPet)
+
+router.delete('/delete/:id', petController.deletePet)
+
 
 module.exports = router;
 

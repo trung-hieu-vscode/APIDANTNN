@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 const mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
@@ -15,6 +16,13 @@ var orderRouter = require('./routes/orderApi');
 var orderDetailRouter = require('./routes/orderDetailApi');
 
 var app = express();
+
+app.use(cors()); // Kích hoạt CORS cho tất cả các yêu cầu
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 
 mongoose.connect('mongodb+srv://khaintps35811:261002@petappapi.xtmlkbx.mongodb.net/database', {
   useNewUrlParser: true,
